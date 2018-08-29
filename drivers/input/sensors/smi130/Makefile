@@ -1061,6 +1061,18 @@ prepare2: prepare3 outputmakefile asm-generic
 prepare1: prepare2 $(version_h) include/generated/utsrelease.h \
                    include/config/auto.conf
 	$(cmd_crmodverdir)
+obj-y   += smi130_acc.o
+
+ifeq ($(CONFIG_SENSORS_SMI_ACC2X2_ENABLE_INT1),y)
+	EXTRA_CFLAGS += -DSMI_ACC2X2_ENABLE_INT1
+endif
+
+ifeq ($(CONFIG_BOSCH_SMI_ACC2X2_ENABLE_INT2),y)
+	EXTRA_CFLAGS += -DSMI_ACC2X2_ENABLE_INT2
+endif
+
+obj-y    += smi130_gyro_driver.o smi130_gyro.o
+EXTRA_CFLAGS += -DSMI_GYRO_USE_BASIC_I2C_FUNC
 
 archprepare: archheaders archscripts prepare1 scripts_basic
 
