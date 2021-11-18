@@ -17,4 +17,4 @@ steps:
     - pacman -Sy base-devel bc curl zip wget git lld --noconfirm
     - git clone --depth=1 --quiet https://zebusen:$PERSONAL_TOKEN@github.com/zebusen/msm-4.4.git -b Whyred_4 source && cd source
     - git clone --depth=1 --quiet https://github.com/zebusen/buildscript.git
-    - script -c "bash -x buildscript/sdm660.sh --gcc-elf silont-11 --oldcam"
+    - script -c "bash -x buildscript/sdm660.sh --gcc-elf --silont-11 --oldcam"
